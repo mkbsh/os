@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/cs131/pa1/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/megkobashi/Documents/COSI131/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="/Users/megkobashi/Downloads/hamcrest-all-1.3.jar"/>
+	<classpathentry kind="output" path="src/cs131/pa1/bin"/>
+</classpath>

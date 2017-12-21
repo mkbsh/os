@@ -1,0 +1,36 @@
+package cs131.pa1.filter.sequential;
+
+import cs131.pa1.filter.Message;
+
+import java.util.*;
+
+public class SequentialREPL {
+	final static String rootDirectory = System.getProperty("user.dir");
+
+	public static String currentWorkingDirectory;
+	
+	public static void main(String[] args){
+		currentWorkingDirectory = rootDirectory;
+		Scanner scanner = new Scanner(System.in);
+		System.out.print(Message.WELCOME.toString());
+		while (true) {
+			System.out.print(Message.NEWCOMMAND);
+			if (scanner.hasNextLine()) {
+				String command = scanner.nextLine();
+				if (command.equals("exit")) {
+					break;
+				}
+				SequentialFilter filter =
+						SequentialCommandBuilder.createFiltersFromCommand(command);
+				while (filter != null) {
+					filter.process();
+					filter = (SequentialFilter) filter.getNext();
+				}
+			}
+		}
+		scanner.close();
+		System.out.print(Message.GOODBYE);
+		
+	}
+
+}

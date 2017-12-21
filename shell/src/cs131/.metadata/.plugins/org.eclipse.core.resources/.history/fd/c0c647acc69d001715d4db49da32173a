@@ -1,0 +1,39 @@
+package cs131.pa1.filter.sequential;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+
+import cs131.pa1.filter.Message;
+
+public class Uniq extends SequentialFilter {
+
+	public Uniq(String subCommand) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public void process() {
+		Set<String> no_dups = new HashSet<String>(input);
+		for (String s : no_dups) {
+			processLine(s);
+		}
+	}
+
+	@Override
+	protected String processLine(String line) {
+		if (isDone()) {
+			System.out.println(line);
+		} else {
+			output.add(line);
+		}
+		return null;
+	}
+	
+	@Override
+	public boolean isDone() {
+		return next == null;
+	}
+
+}

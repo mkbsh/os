@@ -1,0 +1,37 @@
+package cs131.pa1.filter.sequential;
+
+import cs131.pa1.filter.Message;
+
+public class Pwd extends SequentialFilter {
+	private final String command;
+	
+	public Pwd(String command) {
+		this.command = command.trim();
+	}
+
+	@Override
+	public void process() {
+		if (!command.equals("pwd")) {
+			System.out.println(Message.INVALID_PARAMETER.with_parameter(command));
+			throw new IllegalArgumentException();
+			
+		}
+		processLine(SequentialREPL.currentWorkingDirectory);
+	}
+
+	@Override
+	protected String processLine(String line) {
+		if (isDone()) {
+			System.out.println(line);
+		} else {
+			output.add(line);
+		}
+		return null;
+	}
+	
+	@Override
+	public boolean isDone() {
+		return next == null;
+	}
+
+}
